@@ -4,13 +4,13 @@ Bienvenue sur le projet "Plateforme de Réservation d'Hébergements", spécialem
 
 ### Quelques captures d'écran 
 
-![Capture d'Écran 1](screenshots/img1.png)
+![Capture d'Écran 1](Screenshots/img1.png)
 *Page d'accueil*
 
-![Capture d'Écran 2](screenshots/img2.png)
+![Capture d'Écran 2](Screenshots/img2.png)
 *Page de connexion*
 
-![Capture d'Écran 3](screenshots/img3.png)
+![Capture d'Écran 3](Screenshots/img3.png)
 *Page de réservation*
 
 ![Capture d'Écran 4](screenshots/img4.png)
