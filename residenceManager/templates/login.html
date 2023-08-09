@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <img src={% static 'img/login.png' %} alt="" width="200" class="ms-2 mb-3">
+        <h1 style="color: #E29231;" class="text-center">Connexion</h1>
+    </div>
+    <div class="container d-flex flex-column justify-content-center align-items-center login">
+        <div class="row py-4 p-5">
+            <form action={% url "process_login" %} method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="student_number">Numéro étudiant</label><br>
+                    <input type="text" placeholder="Veuillez entrer votre numéro Etudiant" class="input-log" name="student_number">
+                </div>
+                <div >
+                    <br>
+                    <label for="password">Mot de passe</label><br>
+                    <input type="password" placeholder="Veuillez entrer votre mot de passe" class="input-log" name="password">
+                </div>
+                <div>
+                    <br>
+                    <input type="submit" value="Connecter" class="text-white fw-bold input-log" style="background-color: #E29231;">
+                </div>
+            </form>
+        </div>
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+    </div>
+    <div class="">
+        <p>Vous n'avez pas de compte ? <a href={% url "register" %}>inscrivez vous</a></p>
+    </div>
+</div>
+
+{% endblock %}

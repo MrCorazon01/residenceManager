@@ -1,0 +1,23 @@
+Fonctionnalités principales:
+-Enregistrement des étudiants :
+	-Les étudiants peuvent s'inscrire en fournissant leur numéro d'étudiant, leur numéro de téléphone et leur département.
+	-Un nom d'utilisateur unique est automatiquement généré pour chaque étudiant lors de l'enregistrement.
+	-Les mots de passe des étudiants sont initialisés avec une valeur par défaut.
+-Authentification :
+	-Les utilisateurs peuvent se connecter en utilisant leur numéro d'étudiant et leur mot de passe.
+	-Les utilisateurs doivent fournir des informations valides pour se connecter avec succès.
+-Gestion des étudiants :
+	-Les administrateurs peuvent consulter la liste de tous les étudiants enregistrés.
+	-Une barre de recherche permet de rechercher des étudiants par leur numéro d'étudiant, leur prénom ou leur nom, en ignorant la casse.
+	-Les administrateurs peuvent accéder aux informations détaillées d'un étudiant spécifique.
+-Gestion des paiements :
+	-Les administrateurs peuvent ajouter des paiements mensuels pour les étudiants.
+	-Chaque paiement est associé à un mois spécifique, un montant et un statut de paiement (payé ou non payé).
+	-Les administrateurs peuvent visualiser les paiements effectués par chaque étudiant.
+-Réservation de chambre :
+	-Les étudiants ont la possibilité de réserver une chambre dans la résidence universitaire.
+	-Le système propose une liste de chambres disponibles avec des détails tels que la capacité du chambre, le nombre de place restant, etc.
+	-Les étudiants peuvent sélectionner une chambre disponible et effectuer une réservation.
+-Gestion des plaintes et des réclamations :
+	-Les étudiants peuvent soumettre des plaintes ou des réclamations concernant leur chambre.
+	-Les demandes peuvent porter sur des problèmes techniques, des demandes de maintenance, des requêtes spéciales, etc.

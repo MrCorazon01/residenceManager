@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="pt-2">
+    <button onclick="window.history.back()" class="btn btn-dark"><b><</b></button>
+</div>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <img src={% static 'img/login.png' %} alt="" width="200" class=" mb-3 ps-5 mt-2">
+        <h1 style="color: #E29231;">Informations</h1>
+    </div>
+    <div class="container d-flex flex-column justify-content-center align-items-center login">
+        <div class="col-6 ms-5">
+            <table class="table">
+                <tr>
+                    <td><b>Adresse Email:</b></td>
+                    <td>{{ student.user.email }}</td>
+                </tr>
+                <tr>
+                    <td><b>Numéro Téléphone:</b></td>
+                    <td>{{ student.telephone }}</td>
+                </tr>
+                <tr>
+                    <td><b>Numéro Etudiant:</b></td>
+                    <td>{{ student.student_number }}</td>
+                </tr>
+                <tr>
+                    <td><b>Département:</b></td>
+                    <td>{{ student.department }}</td>
+                </tr>
+                
+                <tr>
+                    {% if student.reservation.reservation_id %}
+                    <td><b>Chambre:</b></td>
+                    <td>{{ student.reservation.room.room_number }}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if student.reservation.reservation_id %}
+                    <td><b>Date reservation:</b></td>
+                    <td>{{ student.reservation.reservation_date|date:"d F Y" }} à {{ student.reservation.reservation_date|time:"H\hi" }}</td>                {% endif %}
+                </tr>
+                
+        
+            </table>
+            
+        </div>
+        <div class="mb-5 logout">
+            
+            <form action={% url 'payment_student' %} method="post">
+                {% csrf_token %}
+                <div class="container d-flex justify-content-end">
+                    <input type="hidden" name="student_number" value="{{ student.student_number }}">
+                    <input type="submit" value="Paiements"  class="input-valider fw-bold">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

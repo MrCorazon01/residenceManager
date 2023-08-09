@@ -1,0 +1,1 @@
+Aucun nouveau module que ce présent dans django par défaut n'est requis

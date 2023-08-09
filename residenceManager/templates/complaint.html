@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container ">
+    {% block complainte %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div><img src={% static 'img/plainte.png' %} alt="" width="170"></div>
+        <div class="text-center" style="color: #E29231;">
+            <h3>Soumettre une plainte</h3>
+        </div>
+        <div class="p-3 px-5"><p>Bienvenue sur la page de soumission des plaintes. Si vous rencontrez un problème ou si vous avez une préoccupation, nous sommes là pour vous aider. Veuillez remplir le formulaire ci-dessous pour nous faire part de votre plainte. Nous ferons de notre mieux pour résoudre votre problème dans les plus brefs délais.</p></div>
+        
+    </div>
+    {% endblock complainte %}
+    <div class="container-fluid">
+        <div class="d-flex flex-row justify-content-between">
+            <div><h4 style="color: #E29231;" class=""><u>Soumettez votre plainte</u></h4></div>
+            <div ><a href={% url "complaints_history" %} style="color: #E29231;">Historique des plaintes</a></div>
+        </div>
+    </div>
+    <div class="plainte px-2 mb-3">
+        <form action={% url "process_complaint" %} method="post">
+            {% csrf_token %}
+            <div>
+                <label for="subject">Sujet</label><br>
+                <input type="text" name="subject" id="subject">
+            </div>
+            <div>
+                <label for="description">Decription</label><br>
+                <textarea name="description" id="" cols="60" rows="5"></textarea>
+            </div>
+            <div class="container d-flex justify-content-end">
+                <input type="button" value="Valider"  class="input-valider fw-bold" onclick="showConfirmation()">
+            </div>
+        </form>
+    </div>
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    {% if message %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endif %}
+    
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Fonction pour afficher la boîte de dialogue de confirmation
+    function showConfirmation() {
+        $('#confirmationModal').modal('show');
+
+        // Gérer le clic sur le bouton Confirmer dans la boîte de dialogue
+        $('#btnConfirmer').click(function() {
+            submitForm();
+        });
+
+        // Gérer le clic sur le bouton Annuler dans la boîte de dialogue
+        $('#btnAnnuler').click(function() {
+            $('#confirmationModal').modal('hide');
+        });
+
+        // Gérer le clic sur le bouton Annuler dans l'en-tête de la boîte de dialogue
+        $('#btnAnnuler1').click(function() {
+            $('#confirmationModal').modal('hide');
+        });
+    }
+
+    // Fonction pour soumettre le formulaire après confirmation
+    function submitForm() {
+        $('#confirmationModal').modal('hide');
+        $('form').submit();
+    }
+</script>
+
+
+<!-- Structure de la boîte de dialogue de confirmation (Bootstrap Modal) -->
+<div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmation de soumission</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnAnnuler1">
+            <span aria-hidden="true">&times;</span> 
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir soumettre votre plainte ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="btnConfirmer">Confirmer</button>
+          <button type="button" class="btn btn-secondary" id="btnAnnuler" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+</div>
+{% endblock content %}

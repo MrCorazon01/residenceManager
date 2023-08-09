@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container ">
+    {% block room_header %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div><img src={% static 'img/bed.png' %} alt="" width="170"></div>
+        <div class="text-center" style="color: #E29231;">
+            <h3>Recherche de Chambres <br>Disponibles</h3>
+        </div>
+        <div><p>Utilisez notre fonction de recherche à côté pour découvrir les chambres disponibles dans nos pavillons résidentiels</p></div>
+        
+    </div>
+    {% endblock room_header %}
+    <div>
+        <h3 style="color: #E29231;" class="pt-2"><u>Pavillons</u></h3>
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+        {% endif %}
+        {% if message %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+        {% endif %}
+        <div class="room">
+            <div class="d-flex flex-row justify-content-around">
+                <a href={% url 'room_h1' %}>
+                    <div class="bg-dark d-flex flex-column justify-content-center align-items-center" style="border-radius: 20px;">
+                        <img src={% static 'img/pavillon.png' %} alt="" width="130" class="px-2 mx-3">
+                        <p class="text-white fw-bold">H1</p>
+                    </div>
+                </a>
+                <a href={% url 'room_h2' %}>
+                    <div class="bg-dark d-flex flex-column justify-content-center align-items-center" style="border-radius: 20px;">
+                        <img src={% static 'img/pavillon.png' %} alt="" width="130" class="px-2 mx-3">
+                        <p class="text-white fw-bold">H2</p>
+                    </div>
+                </a>
+                <a href={% url 'room_h3' %}>
+                    <div class="bg-dark d-flex flex-column justify-content-center align-items-center" style="border-radius: 20px;">
+                        <img src={% static 'img/pavillon.png' %} alt="" width="130" class="px-2 mx-3">
+                        <p class="text-white fw-bold">H3</p>
+                    </div>
+                </a>
+            </div>
+            <div class="d-flex flex-row justify-content-around pt-5">
+                <div></div>
+                <a href={% url 'room_h4' %}>
+                    <div class="bg-dark d-flex flex-column justify-content-center align-items-center" style="border-radius: 20px;">
+                        <img src={% static 'img/pavillon.png' %} alt="" width="130" class="px-2 mx-3">
+                        <p class="text-white fw-bold">H4</p>
+                    </div>
+                </a>
+                <a href={% url 'room_h5' %}>
+                    <div class="bg-dark d-flex flex-column justify-content-center align-items-center" style="border-radius: 20px;">
+                        <img src={% static 'img/pavillon.png' %} alt="" width="130" class="px-2 mx-3">
+                        <p class="text-white fw-bold">H5</p>
+                    </div>
+                </a>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

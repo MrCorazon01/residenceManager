@@ -1,0 +1,249 @@
+
+li{
+    list-style: none;
+    width: 150% !important;
+    padding-left: 5% !important;
+}
+i{
+  padding-right: 5px;
+}
+
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+    
+}
+
+.has-search{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+img{
+    padding-right: 15px;
+}
+
+.fa-search{
+    padding-left: 0px !important;
+    margin-top: 0px !important;
+}
+.input-search{
+    border-radius: 10px !important;
+    background-color: #2F353B !important;
+    border-color: #2F353B !important;
+    height: 20px !important;
+    padding: 25px !important;
+    padding-left: 70px !important;
+    width: 110% !important;
+    margin-left: -25px;
+}
+.input-search:focus{
+    color: white !important;
+}
+
+.sign a, li a, .room a{
+  color: white !important;
+  font-weight: bold !important;
+  padding: 15px !important;
+}
+
+.logout a{
+  color: white;
+  text-decoration: none;
+}
+.logout a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+/*
+.sign{
+    width: 100%;
+}
+
+/* CSS personnalisé */
+
+.background-image {
+    background-image: url("../img/image-ept.png");
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 135vh;
+    
+    position: relative;
+
+  }
+
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 7, 26, 0.792); 
+  } 
+
+  .text-container {
+    position: relative;
+    z-index: 1; 
+    color: white; 
+    padding: 20px;
+  }
+
+  .text-1-accueil{
+    color: #E29231;
+    font-size: 20px;
+  }
+
+  .circles{
+    position: relative;
+    top: -12px;
+  }
+
+  .circle, .circle-p{
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; 
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 100px;
+    
+  }
+  .circle{
+    position: relative;
+    top: 50px;
+    width: 130px;
+    height: 130px;
+    font-size: 20px;
+    color: #E29231 !important;
+    
+  }
+  .circle-p-text{
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+    line-height: 15px;
+  }
+  .circle-text{
+    position: relative;
+    top: 0px;
+    line-height: 23px;
+    color: #E29231 !important;
+  }
+
+  .bar {
+    width: 75px; 
+    height: 1px; 
+    background-color: black; 
+    margin: 10px 0; 
+    margin-left: 11px;
+    
+  }
+
+  .circle-p img{
+    padding: 2px;
+  }
+
+  .circle .fa-search{
+    width: 30px !important;
+    height: 30px;
+    color: #E29231;
+    padding-top: 10px;
+  }
+
+  .circle .bar{
+    margin-left: 27px;
+    background-color: #E29231 !important;
+
+  }
+
+  .input-log{
+    width: 380px !important;
+    height: 50px;
+    border: groove;
+    border-radius: 10px;
+    border-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 2px 0px;
+    padding-left: 15px;
+}
+.input1 div input, select{
+    width: 350px !important;
+    height: 50px;
+    border: groove;
+    border-radius: 10px;
+    border-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 2px 0px;
+    padding-left: 15px;
+}
+
+.input-valider{
+    background-color: #E29231;
+    width: 200px;
+    height: 50px;
+   border: 0px;
+    border-radius: 20px;
+    
+    font-size: 20px;
+    color: white;
+}
+
+.login{
+  font-size: 18px;
+}
+  
+
+.plainte input{
+  width: 250px;
+  height: 40px !important;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.plainte textarea{
+
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.checkbox input{
+  width: 30px;
+  height: 30px;
+}
+
+
+ /* this is needed to make the content scrollable on larger screens */
+@media (min-width: 576px) {
+  .h-sm-100 {
+      height: 100%;
+  }
+}
+
+@media (max-width: 860px) {
+  .logo-img{
+    width: 180px;
+  }
+  
+  .sidebar-search{
+    display: none;
+  }
+  .sign{
+    display: none;
+  }
+  
+}
+
+@media (max-width: 894px){
+  .input-search{
+    width: 100% !important;
+  }
+}

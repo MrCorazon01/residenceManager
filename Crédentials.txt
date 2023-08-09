@@ -1,0 +1,18 @@
+Crédential pour utilsateur simple
+-------------------------------------------------
+Numero etudiant: E12345678	
+password: django2023
+-------------------------------------------------
+
+Crédential pour utilsateur admin
+-------------------------------------------------
+Numero etudiant: admin	
+password: admin2023
+-------------------------------------------------
+
+PS: l'admin pourra acceder à plus de fonctionnalités
+
+
+pour acceder à la page administration django
+username : kholle
+password : kholle

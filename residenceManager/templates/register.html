@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form action={% url "add_user" %} method="post">
+    {% csrf_token %}
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <div>
+            <img src={% static 'img/register.png' %} alt="" width="110" class="ms-5 mb-1 ps-3 mt-2">
+            <h1 style="color: #E29231;" class="text-center">Inscription</h1>
+        </div>
+        <div class="container d-flex flex-row justify-content-between px-5">
+            <div class="input1">
+                <div class="mb-3">
+                    {{form2.first_name.label}}<br>
+                    {{ form2.first_name }}
+                </div>
+                <div class="mb-3">
+                    {{form2.last_name.label}}<br>
+                    {{ form2.last_name }}
+                </div>
+                <div class="mb-3">
+                    {{form2.email.label}}<br>
+                    {{ form2.email }}
+                </div>
+                <div class="mb-3">
+                    {{form1.student_number.label}}<br>
+                    {{ form1.student_number }}
+                </div>
+            </div>
+            <div class="input1">
+                <div class="mb-3">
+                    {{form1.department.label}}<br>
+                    <select name="department">
+                        <option value="">---------</option>
+                        <option value="GIT">GIT</option>
+                        <option value="GEM">GEM</option>
+                        <option value="GC">GC</option>
+                        <option value="Aero">Aero</option>
+                        <option value="GI">GI</option>
+                      </select>
+                </div>
+                <div class="mb-3">
+                    {{form1.telephone.label}}<br>
+                    {{ form1.telephone }}
+                </div>
+                <div class="mb-3">
+                    {{form2.password.label}}<br>
+                    {{ form2.password }}
+                </div>
+                <div class="mb-3">
+                    {{form2.password2.label}}<br>
+                    {{ form2.password2 }}
+                </div>
+            </div>
+            
+        </div>
+        <div>
+            <input type="submit" value="Valider" class="input-valider fw-bold">
+        </div>
+        <div>
+            <p>Vous avez pas de compte ? <a href={% url 'login' %}>connectez-vous</a></p>
+        </div>
+        {% if message %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        
+    </div>
+    
+</form>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="pt-3">
+        <img src={% static 'img/user.png' %} alt="" width="150" class="ms-4 mb-3 ps-3">
+        <h1 style="color: #E29231;" class="text-center">Dashboard</h1>
+    </div>    
+</div>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="py-2">
+        <h2> <b>{{ student.user.first_name }} {{ student.user.last_name }}</b> </h2>
+    </div>
+    <div class="col-6 ms-5">
+        <table class="table">
+            <tr>
+                <td><b>Adresse Email:</b></td>
+                <td>{{ student.user.email }}</td>
+            </tr>
+            <tr>
+                <td><b>Numéro Téléphone:</b></td>
+                <td>{{ student.telephone }}</td>
+            </tr>
+            <tr>
+                <td><b>Numéro Etudiant:</b></td>
+                <td>{{ student.student_number }}</td>
+            </tr>
+            <tr>
+                <td><b>Département:</b></td>
+                <td>{{ student.department }}</td>
+            </tr>
+            
+            <tr>
+                {% if student.reservation.reservation_id %}
+                <td><b>Chambre:</b></td>
+                <td>{{ student.reservation.room.room_number }}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                {% if student.reservation.reservation_id %}
+                <td><b>Date reservation:</b></td>
+                <td>{{ student.reservation.reservation_date|date:"d F Y" }} à {{ student.reservation.reservation_date|time:"H\hi" }}</td>                {% endif %}
+            </tr>
+            <tr>
+                {% if error %}
+                <div class="alert alert-danger text-center">
+                    {{error}}
+                </div>
+                {% endif %}
+                {% if message %}
+                <div class="alert alert-success text-center">
+                    {{message}}
+                </div>
+                {% endif %}
+            </tr>
+    
+        </table>
+    </div>
+    {% if student.reservation.reservation_id %}
+    <div class="mb-5 logout">
+        <form action={% url 'delete_reservation' %}>
+            <div class="container d-flex justify-content-end">
+                <input type="button" value="Déréserver"  class="input-valider fw-bold" onclick="showConfirmation()">
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="mb-5 logout">        
+        <a href={% url 'room' %} class="input-valider fw-bold px-5 py-2">Faire votre reservation</a>
+    </div>
+    {% endif %}
+
+    
+    
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Fonction pour afficher la boîte de dialogue de confirmation
+    function showConfirmation() {
+        $('#confirmationModal').modal('show');
+
+        // Gérer le clic sur le bouton Confirmer dans la boîte de dialogue
+        $('#btnConfirmer').click(function() {
+            submitForm();
+        });
+
+        // Gérer le clic sur le bouton Annuler dans la boîte de dialogue
+        $('#btnAnnuler').click(function() {
+            $('#confirmationModal').modal('hide');
+        });
+
+        // Gérer le clic sur le bouton Annuler dans l'en-tête de la boîte de dialogue
+        $('#btnAnnuler1').click(function() {
+            $('#confirmationModal').modal('hide');
+        });
+    }
+
+    // Fonction pour soumettre le formulaire après confirmation
+    function submitForm() {
+        $('#confirmationModal').modal('hide');
+        $('form').submit();
+    }
+</script>
+
+
+<!-- Structure de la boîte de dialogue de confirmation (Bootstrap Modal) -->
+<div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmation de suppression</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnAnnuler1">
+            <span aria-hidden="true">&times;</span> 
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir supprimer votre reservation ? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="btnConfirmer">Confirmer</button>
+          <button type="button" class="btn btn-secondary" id="btnAnnuler" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+{% endblock %}

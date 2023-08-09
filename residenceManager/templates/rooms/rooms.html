@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div><img src={% static 'img/bed.png' %} alt="" width="170"></div>
+            <div class="text-center" style="color: #E29231;">
+                <h3>Recherche de Chambres <br>Disponibles</h3>
+            </div>
+            <div><p>Utilisez notre fonction de recherche à côté pour découvrir les chambres disponibles dans nos pavillons résidentiels</p></div>
+            
+        </div>
+        <div class="container-fluid">
+            <div class="d-flex flex-row justify-content-between">
+                <div><h4 style="color: #E29231;" class="pt-2"><u>Pavillons</u></h4></div>
+                <div ><a href={% url "room" %} style="color: #E29231;">Retour aux pavillons</a></div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            {% if not rooms %}
+                <div class="container text-center my-5">
+                    <h3>Cette liste est vide</h3>
+                </div>
+
+            {% else %}
+
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Chambre</th>
+                            <th>Capacité</th>
+                            <th>Place(s) restante</th>
+                            <th>Reserver</th>
+                        </tr>
+                    </thead>
+                    {% for room in rooms %}
+                    <tr>
+                        <td>{{room}}</td>
+                        <td>{{room.capacite}}</td>
+                        <td>{{room.remaining_space}}</td>
+                        <td>
+                            <form  id="reservationForm_{{ room.room_number }}" method="post" action="{% url 'reservation' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="room_number" value="{{ room.room_number }}">
+                                <button type="button" class="btn btn-dark text-white" onclick="return confirmerReservation('{{ room.room_number }}')">Réserver</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            {% endif %}
+            
+            
+        </div>
+    </div>
+
+<!-- Importer la bibliothèque jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  // Fonction pour afficher la boîte de dialogue de confirmation
+  function confirmerReservation(roomId) {
+
+    $('#confirmationModal').modal('show');
+
+    $('#btnConfirmer').click(function() {
+      $('#reservationForm_' + roomId).submit();
+
+      // Fermer la boîte de dialogue
+        $('#confirmationModal').modal('hide');
+    });
+
+    // Lorsque l'utilisateur clique sur le bouton d'annulation
+    $('#btnAnnuler').click(function() {
+      // Fermer la boîte de dialogue
+      $('#confirmationModal').modal('hide');
+    });
+
+    $('#btnAnnuler1').click(function() {
+        // Fermer la boîte de dialogue
+        $('#confirmationModal').modal('hide');
+      });
+  }
+</script>
+
+
+<!-- Structure de la boîte de dialogue de confirmation (Bootstrap Modal) -->
+<div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmation de réservation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnAnnuler1">
+            <span aria-hidden="true">&times;</span> 
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir réserver cette chambre ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="btnConfirmer">Confirmer</button>
+          <button type="button" class="btn btn-secondary" id="btnAnnuler" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+{% endblock content %}

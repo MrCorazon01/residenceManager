@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container ">
+    {% block complainte %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div><img src={% static 'img/paiment-1.png' %} alt="" width="200"></div>
+        <div class="text-center" style="color: #E29231;">
+            <h3>Paiement de Chambre</h3>
+        </div>
+        <div class="p-3 px-5 text-center"><p>Cette page vous permet de suivre facilement vos paiements mensuels et de vous assurer qu'ils sont à jour dans vos obligations financières.</p></div>
+        
+    </div>
+    {% endblock complainte %}
+    <div class="container-fluid">
+        <div class="d-flex flex-row justify-content-between">
+            <div><h4 style="color: #E29231;" class=""><u>Consultation des paiements</u></h4></div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <th>Année</th>
+                <th>Mois</th>
+                <th>Montant</th>
+                <th>Statut</th>
+            </thead>
+        {% for status in payment_status %}
+            <tr>
+                <td>{{ current_year }}</td>
+                <td>{{ status.0 }}</td>
+                <td>{{ status.2 }}</td>
+                <td>{% if status.1 %}
+                    <span class="btn btn-dark"><b>✓</b></span>
+                    {% else %}
+                    <span class="btn btn-dark"><b>x</b></span>
+                    {% endif %}</td>
+                
+            </tr>
+        {% endfor %}
+        </table>
+
+    </div>
+    
+    
+</div>
+{% endblock content %}

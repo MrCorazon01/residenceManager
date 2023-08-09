@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="pt-2">
+    <button onclick="window.history.back()" class="btn btn-dark"><b><</b></button>
+</div>
+
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <img src={% static 'img/login.png' %} alt="" width="200" class="ms-5 mb-3 ps-5">
+        <h1 style="color: #E29231;" class="text-center">Ajouter un payment</h1>
+    </div>
+    <div class="container d-flex flex-column justify-content-center align-items-center login">
+        <div class="row py-4 p-5">
+            <form action={% url 'payment_register' %} method="post">
+                {% csrf_token %}
+                <div class="input1 py-1">
+                    <div>
+                        {{form.amount.label}}<br>
+                        {{form.amount}}
+                    </div>
+                </div>
+                <div class="py-2">
+                    {{form.mounth.label}}<br>
+                    {{form.mounth}}
+                </div>
+                <div class="checkbox py-2">
+                    {{form.payment_statut.label}}<br>
+                    {{form.payment_statut}}
+                </div>
+                <div>
+                    <br>
+                    <input type="hidden" name="student_number" value="{{student.student_number}}">
+                    <input type="submit" value="Valider" class="text-white fw-bold input-log" style="background-color: #E29231;">
+                </div>
+            </form>
+        </div>
+        {% if message %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %}

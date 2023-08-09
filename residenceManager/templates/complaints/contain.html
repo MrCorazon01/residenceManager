@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container ">
+    {% block complainte %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div><img src={% static 'img/plainte.png' %} alt="" width="170"></div>
+        <div class="text-center" style="color: #E29231;">
+            <h3>Soumettre une plainte</h3>
+        </div>
+        <div class="p-3 px-5"><p>Bienvenue sur la page de soumission des plaintes. Si vous rencontrez un problème ou si vous avez une préoccupation, nous sommes là pour vous aider. Veuillez remplir le formulaire ci-dessous pour nous faire part de votre plainte. Nous ferons de notre mieux pour résoudre votre problème dans les plus brefs délais.</p></div>
+        
+    </div>
+    {% endblock complainte %}
+    <div class="container-fluid">
+        <div class="d-flex flex-row justify-content-between">
+            <div><h4 style="color: #E29231;" class=""><u>Soumettez votre plainte</u></h4></div>
+            <div ><a href={% url "complaints_history" %} style="color: #E29231;">Retour à l'historique</a></div>
+        </div>
+    </div>
+
+    <div class="container border p-4" style="min-height: 40vh;">
+        <h5>Sujet: {{ complaint.subject }}</h5>
+        <div>
+            {{ complaint.description }}
+        </div>
+    </div>
+    
+        
+    
+</div>
+{% endblock content %}
