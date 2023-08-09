@@ -29,6 +29,7 @@ Assurez-vous d'avoir Python et Django installés sur votre système.
 Lancez le serveur de développement Django :
 
 python manage.py runserver
+
 Accédez à l'application dans votre navigateur à l'adresse : http://127.0.0.1:8000/
 
 C'est tout ! Vous devriez maintenant voir l'application en cours d'exécution sur votre machine.
