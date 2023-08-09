@@ -13,7 +13,7 @@ Bienvenue sur le projet "Plateforme de Réservation d'Hébergements", spécialem
 ![Capture d'Écran 3](Screenshots/img3.png)
 *Page de réservation*
 
-![Capture d'Écran 4](screenshots/img4.png)
+![Capture d'Écran 4](Screenshots/img4.png)
 *Page de paiement*
 
 ## Comment Lancer le Projet
